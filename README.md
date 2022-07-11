@@ -1,8 +1,8 @@
 ## hello world
- list product in store
- add product
- add to cart
- check out
+- list product in store
+- add product
+- add to cart
+- check out
 
 
 # Product include
