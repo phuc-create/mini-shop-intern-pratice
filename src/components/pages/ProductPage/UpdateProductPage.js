@@ -13,7 +13,10 @@ const UpdateProductPage = ({ product, onSubmitUpdateProduct }) => {
           quantity: product.quantity,
         }}
 
-        onSubmit={(values) => onSubmitUpdateProduct(values)}
+        onSubmit={(values) => {
+          const newProduct = { ...values, id: product.id }
+          onSubmitUpdateProduct(newProduct)
+        }}
       >
         <Form>
           <table border={1}>

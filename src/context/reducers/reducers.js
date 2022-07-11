@@ -31,10 +31,15 @@ export const initalizeState = {
   isAddingToCart: false,
   isAddToCartSuccess: false,
   isAddToCartFail: false,
+
   //handle add to cart
   isRemoving: false,
   isRemoveSuccess: false,
   isRemoveFail: false,
+  //handle add to cart
+  isUpdating: false,
+  isUpdateSuccess: false,
+  isUpdateFail: false,
 }
 
 export const StoreReducers = (state, action) => {
@@ -131,6 +136,31 @@ export const StoreReducers = (state, action) => {
         isRemoving: false,
         isRemoveSuccess: false,
         isRemoveFail: true,
+        errors: action.payload.errors
+      }
+    case storeType.UPDATE_PRODUCT:
+      const idxUpdate = state.products.map(v => v.id).indexOf(action.payload.id)
+      state.products[idxUpdate] = action.payload
+      return {
+        ...state,
+        isUpdating: true,
+        isUpdateSuccess: false,
+        isUpdateFail: false,
+      }
+    case storeType.UPDATE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isUpdating: false,
+        isUpdateSuccess: true,
+        isUpdateFail: false,
+        products: state.products.filter(product => product.id !== action.payload)
+      }
+    case storeType.UPDATE_PRODUCT_FAIL:
+      return {
+        ...state,
+        isUpdating: false,
+        isUpdateSuccess: false,
+        isUpdateFail: true,
         errors: action.payload.errors
       }
 

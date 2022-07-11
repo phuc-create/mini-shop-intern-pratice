@@ -55,9 +55,23 @@ const DELETE_PRODUCT = async (dispatch, payload) => {
   }
 }
 
+const UPDATE_PRODUCT = async (dispatch, payload) => {
+  dispatch({ type: storeType.UPDATE_PRODUCT })
+  try {
+    dispatch({ type: storeType.UPDATE_PRODUCT_SUCCESS, payload: payload })
+
+  } catch (error) {
+    dispatch({
+      type: storeType.UPDATE_PRODUCT_FAIL,
+      payload: { errors: error }
+    })
+  }
+}
+
 export {
   ADD_PRODUCT,
   ADD_CART,
   REMOVE_FROM_CART,
-  DELETE_PRODUCT
+  DELETE_PRODUCT,
+  UPDATE_PRODUCT
 }
