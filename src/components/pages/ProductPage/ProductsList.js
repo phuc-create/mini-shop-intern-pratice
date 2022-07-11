@@ -2,7 +2,7 @@ import React from 'react'
 import { useStoreContext } from '../../../context/context'
 import Product from './Product'
 
-const ProductsList = () => {
+const ProductsList = ({ update }) => {
   const { state } = useStoreContext()
   return (
     <table border={1}>
@@ -19,7 +19,7 @@ const ProductsList = () => {
       <tbody>
         {state.products.map(product => {
           return (
-            <Product product={product} key={product.id} />
+            <Product product={product} key={product.id} update={update} />
           )
         })}
       </tbody>

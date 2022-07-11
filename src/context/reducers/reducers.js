@@ -3,18 +3,18 @@ import { storeType } from "../constants"
 export const initalizeState = {
   user: 'Anonymous',
   products: [{
-    id: 1,
-    name: "Product1",
-    price: 20000,
-    quantity: 20
+    id: 1232,
+    name: "Water Melon Smoothie",
+    price: 93000,
+    quantity: 22
   }, {
-    id: 2,
-    name: "Product2",
-    price: 32000,
-    quantity: 12
+    id: 2321,
+    name: "Orange juice",
+    price: 123000,
+    quantity: 101
   }, {
-    id: 3,
-    name: "Product3",
+    id: 3122,
+    name: "Chery Smoothie",
     price: 321000,
     quantity: 32
   }],
@@ -32,9 +32,9 @@ export const initalizeState = {
   isAddToCartSuccess: false,
   isAddToCartFail: false,
   //handle add to cart
-  isRemovingToCart: false,
-  isRemoveToCartSuccess: false,
-  isRemoveToCartFail: false,
+  isRemoving: false,
+  isRemoveSuccess: false,
+  isRemoveFail: false,
 }
 
 export const StoreReducers = (state, action) => {
@@ -88,26 +88,49 @@ export const StoreReducers = (state, action) => {
     case storeType.REMOVE:
       return {
         ...state,
-        isRemovingToCart: true,
-        isRemoveToCartSuccess: false,
-        isRemoveToCartFail: false,
+        isRemoving: true,
+        isRemoveSuccess: false,
+        isRemoveFail: false,
       }
     case storeType.REMOVE_SUCCESS:
       const getIdxPrd = state.products.map(v => v.id).indexOf(action.payload.id)
       state.products[getIdxPrd].quantity += action.payload.quantity
       return {
         ...state,
-        isRemovingToCart: false,
-        isRemoveToCartSuccess: true,
-        isRemoveToCartFail: false,
+        isRemoving: false,
+        isRemoveSuccess: true,
+        isRemoveFail: false,
         cart: state.cart.filter(v => v.id !== action.payload.id)
       }
     case storeType.REMOVE_FAIL:
       return {
         ...state,
-        isRemovingToCart: false,
-        isRemoveToCartSuccess: false,
-        isRemoveToCartFail: true,
+        isRemoving: false,
+        isRemoveSuccess: false,
+        isRemoveFail: true,
+        errors: action.payload.errors
+      }
+    case storeType.REMOVE_PRODUCT:
+      return {
+        ...state,
+        isRemoving: true,
+        isRemoveSuccess: false,
+        isRemoveFail: false,
+      }
+    case storeType.REMOVE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isRemoving: false,
+        isRemoveSuccess: true,
+        isRemoveFail: false,
+        products: state.products.filter(product => product.id !== action.payload)
+      }
+    case storeType.REMOVE_PRODUCT_FAIL:
+      return {
+        ...state,
+        isRemoving: false,
+        isRemoveSuccess: false,
+        isRemoveFail: true,
         errors: action.payload.errors
       }
 

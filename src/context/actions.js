@@ -27,6 +27,7 @@ const ADD_CART = async (dispatch, payload) => {
     })
   }
 }
+
 const REMOVE_FROM_CART = async (dispatch, payload) => {
   dispatch({ type: storeType.REMOVE })
   try {
@@ -40,8 +41,23 @@ const REMOVE_FROM_CART = async (dispatch, payload) => {
     })
   }
 }
+
+const DELETE_PRODUCT = async (dispatch, payload) => {
+  dispatch({ type: storeType.REMOVE_PRODUCT })
+  try {
+    dispatch({ type: storeType.REMOVE_PRODUCT_SUCCESS, payload: payload })
+
+  } catch (error) {
+    dispatch({
+      type: storeType.REMOVE_PRODUCT_FAIL,
+      payload: { errors: error }
+    })
+  }
+}
+
 export {
   ADD_PRODUCT,
   ADD_CART,
-  REMOVE_FROM_CART
+  REMOVE_FROM_CART,
+  DELETE_PRODUCT
 }

@@ -7,8 +7,12 @@ export const storeType = {
   ADD_CART: 'ADD_CART',
   ADD_CART_SUCCESS: 'ADD_CART_SUCCESS',
   ADD_CART_FAIL: 'ADD_CART_FAIL',
-  //remove product
+  //remove product from cart
   REMOVE: 'REMOVE',
   REMOVE_SUCCESS: 'REMOVE_SUCCESS',
   REMOVE_FAIL: 'REMOVE_FAIL',
+  //remove product from list products
+  REMOVE_PRODUCT: 'REMOVE_PRODUCT',
+  REMOVE_PRODUCT_SUCCESS: 'REMOVE_PRODUCT_SUCCESS',
+  REMOVE_PRODUCT_FAIL: 'REMOVE_PRODUCT_FAIL',
 }

@@ -1,16 +1,19 @@
-import React from 'react'
-import { Field, Form, Formik } from 'formik'
-const AddProductPage = ({ onSubmitAddProduct }) => {
+import { Field, Form, Formik } from "formik"
+
+
+const UpdateProductPage = ({ product, onSubmitUpdateProduct }) => {
   return (
     <div>
+      <br />
+      <br />
       <Formik
         initialValues={{
-          name: '',
-          price: '',
-          quantity: '',
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
         }}
 
-        onSubmit={(values) => onSubmitAddProduct(values)}
+        onSubmit={(values) => onSubmitUpdateProduct(values)}
       >
         <Form>
           <table border={1}>
@@ -52,4 +55,4 @@ const AddProductPage = ({ onSubmitAddProduct }) => {
   )
 }
 
-export default AddProductPage
+export default UpdateProductPage
