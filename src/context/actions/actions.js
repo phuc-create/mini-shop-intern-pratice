@@ -1,4 +1,4 @@
-import { storeType } from "./constants"
+import { storeType } from "../constants"
 
 const ADD_PRODUCT = async (dispatch, payload) => {
   dispatch({ type: storeType.ADD_PRODUCT })
