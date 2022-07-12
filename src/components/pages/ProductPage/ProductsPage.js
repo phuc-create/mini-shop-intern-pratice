@@ -17,13 +17,16 @@ const ProductsPage = () => {
     ADD_PRODUCT(dispatch, product)
     setAddPd(!addPd)
   }
+
   const onSubmitUpdateProduct = (values) => {
     UPDATE_PRODUCT(dispatch, values)
   }
+
   const updateProduct = (product = {}) => {
     setUpdatePrd({ update: !updatePrd.update, product: product })
     console.log(product, updatePrd)
   }
+
   return (
     <div className='products-page'>
       <button onClick={() => setAddPd(!addPd)}>{addPd ? 'Back' : 'Add product'}</button>
@@ -32,7 +35,12 @@ const ProductsPage = () => {
         :
         (<ProductsList update={updateProduct} />)
       }
-      {updatePrd.update ? <UpdateProductPage onSubmitUpdateProduct={onSubmitUpdateProduct} product={updatePrd.product} /> : <></>}
+      {updatePrd.update
+        ? <UpdateProductPage
+          onSubmitUpdateProduct={onSubmitUpdateProduct}
+          product={updatePrd.product}
+        />
+        : <></>}
     </div>
   )
 }

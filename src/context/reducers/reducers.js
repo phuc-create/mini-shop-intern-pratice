@@ -139,21 +139,21 @@ export const StoreReducers = (state, action) => {
         errors: action.payload.errors
       }
     case storeType.UPDATE_PRODUCT:
-      const idxUpdate = state.products.map(v => v.id).indexOf(action.payload.id)
-      state.products[idxUpdate] = action.payload
       return {
         ...state,
         isUpdating: true,
         isUpdateSuccess: false,
         isUpdateFail: false,
       }
+
     case storeType.UPDATE_PRODUCT_SUCCESS:
+      const idxUpdate = state.products.map(v => v.id).indexOf(action.payload.id)
+      state.products[idxUpdate] = action.payload
       return {
         ...state,
         isUpdating: false,
         isUpdateSuccess: true,
-        isUpdateFail: false,
-        products: state.products.filter(product => product.id !== action.payload)
+        isUpdateFail: false
       }
     case storeType.UPDATE_PRODUCT_FAIL:
       return {
