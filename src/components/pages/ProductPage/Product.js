@@ -25,6 +25,7 @@ const Product = ({ product, inCart, update }) => {
 
   const isEnableDelete = state.cart.find(v => v.id === product.id)
   const isEnableUpdate = state.cart.find(v => v.id === product.id)
+  const isEnableAddToCart = product.quantity < 1
 
   const cartHandler = () => {
     return !inCart ?
@@ -33,7 +34,7 @@ const Product = ({ product, inCart, update }) => {
           <input type="number" min="1" max={product.quantity} value={quantityBuy} onChange={(e) => setQuantityBuy(e.target.value)} />
         </td>
         <td>
-          <button onClick={handleAddToCart}>Add to Cart</button>
+          <button onClick={handleAddToCart} disabled={isEnableAddToCart}>Add to Cart</button>
           <button disabled={isEnableDelete} onClick={() => handleRemoveProduct(product.id)}>Delete</button>
           <button disabled={isEnableUpdate} onClick={() => update(product)}>Update</button>
         </td>

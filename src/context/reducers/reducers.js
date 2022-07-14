@@ -79,11 +79,10 @@ export const StoreReducers = (state, action) => {
       const prdIdx = state.products.map(v => v.id).indexOf(action.payload.id)
       if (cartIdx >= 0) {
         state.cart[cartIdx].quantity = +state.cart[cartIdx].quantity + +action.payload.quantity
-        state.products[prdIdx].quantity -= +action.payload.quantity
       } else {
         state.cart = [...state.cart, action.payload]
-        state.products[prdIdx].quantity -= +action.payload.quantity
       }
+      state.products[prdIdx].quantity -= +action.payload.quantity
       return {
         ...state,
         isAddingToCart: false,

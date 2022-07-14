@@ -46,7 +46,7 @@ const AddProductPage = ({ onSubmitAddProduct }) => {
               </tr>
             </tbody>
           </table>
-          <button type="submit">Update Product</button>
+          <button type="submit">Add Product</button>
         </Form>
       </Formik>
     </div>
