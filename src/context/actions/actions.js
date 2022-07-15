@@ -67,11 +67,14 @@ const UPDATE_PRODUCT = async (dispatch, payload) => {
     })
   }
 }
-
+const CLEAR_CART = async (dispatch) => {
+  dispatch({ type: storeType.CLEAR_CART })
+}
 export {
   ADD_PRODUCT,
   ADD_CART,
   REMOVE_FROM_CART,
   DELETE_PRODUCT,
-  UPDATE_PRODUCT
+  UPDATE_PRODUCT,
+  CLEAR_CART
 }

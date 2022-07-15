@@ -1,6 +1,6 @@
 import { storeType } from "../constants"
 
-export const initalizeState = {
+export const initState = {
   user: 'Anonymous',
   products: [{
     id: 1232,
@@ -20,7 +20,6 @@ export const initalizeState = {
   }],
   cart: [],
   errors: null,
-  orders: [],
 
   //handle add product
   isAddingProduct: false,
@@ -88,6 +87,11 @@ export const StoreReducers = (state, action) => {
         isAddingToCart: false,
         isAddToCartSuccess: true,
         isAddToCartFail: false
+      }
+    case storeType.CLEAR_CART:
+      return {
+        ...state,
+        cart: []
       }
     case storeType.REMOVE:
       return {
@@ -165,7 +169,7 @@ export const StoreReducers = (state, action) => {
 
     default:
       return {
-        ...initalizeState
+        ...initState
       }
   }
 }

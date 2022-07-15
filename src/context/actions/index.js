@@ -5,10 +5,12 @@ import {
   DELETE_PRODUCT,
   UPDATE_PRODUCT
 } from './actions'
+import { CREATE_ORDER } from './orders'
 export {
   ADD_PRODUCT,
   ADD_CART,
   REMOVE_FROM_CART,
   DELETE_PRODUCT,
-  UPDATE_PRODUCT
+  UPDATE_PRODUCT,
+  CREATE_ORDER
 }

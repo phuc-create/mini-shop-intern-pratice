@@ -8,18 +8,18 @@ import UpdateProductPage from './UpdateProductPage'
 const ProductsPage = () => {
   const [addPd, setAddPd] = useState(false)
   const [updatePrd, setUpdatePrd] = useState({ update: false, product: {} })
-  const { dispatch } = useStoreContext()
+  const { base, order } = useStoreContext()
 
   const onSubmitAddProduct = (values) => {
     const generateIDPr = (Math.random() + "").slice(5, 9)
     const product = { id: generateIDPr, ...values }
     console.log(product)
-    ADD_PRODUCT(dispatch, product)
+    ADD_PRODUCT(base[1], product)
     setAddPd(!addPd)
   }
 
   const onSubmitUpdateProduct = (values) => {
-    UPDATE_PRODUCT(dispatch, values)
+    UPDATE_PRODUCT(base[1], values)
   }
 
   const updateProduct = (product = {}) => {
